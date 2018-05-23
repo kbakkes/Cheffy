@@ -9,8 +9,12 @@ export default class HomeScreen extends React.Component {
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                 <Text>Home Screen</Text>
                 <Button
-                    title="Go to my Profile"
+                    title="Profile"
                     onPress={() => this.props.navigation.navigate('Profile',{title: 'Mijn profiel'})}
+                />
+                <Button
+                    title="My plate"
+                    onPress={() => this.props.navigation.navigate('Plate',{title: 'My Plate'})}
                 />
             </View>
         )

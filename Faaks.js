@@ -5,7 +5,7 @@ export default class Faaks extends Component {
     render() {
         return (
             <View>
-            <Text>Faaks {this.props.name}!</Text>
+                <Text>Faaks {this.props.name}!</Text>
             </View>
         );
     }

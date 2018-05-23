@@ -7,6 +7,7 @@ import HomeScreen from './screens/HomeScreen';
 import ProfileScreen from './screens/ProfileScreen';
 
 import { createStackNavigator } from 'react-navigation';
+import PlateScreen from "./screens/PlateScreen";
 
 
 
@@ -24,6 +25,7 @@ const RootStack = createStackNavigator(
     {
         Home: HomeScreen,
         Profile: ProfileScreen,
+        Plate: PlateScreen,
     },
     {
         initialRouteName: 'Home',
