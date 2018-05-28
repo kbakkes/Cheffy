@@ -1,6 +1,8 @@
+const id = '47d5b17b';
+const key = '9ae07c47a0474c4c05fac5cd08278edd';
 let api = {
     getPerson(){
-        let url = 'https://swapi.co/api/people/16';
+        let url = 'http://api.yummly.com/v1/api/recipes?_'+id+'=app-id&_'+key+'=app-key&cheese';
         fetch(url)
             .then(response => {
                 if (response.status === 200) {
