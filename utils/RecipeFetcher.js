@@ -2,6 +2,7 @@ import _ from 'underscore';
 import React, { Component } from 'react';
 import {Text, View, ScrollView } from 'react-native';
 import ResultComponent from "../components/ResultComponent";
+import { Spinner } from 'native-base';
 
 const id = '47d5b17b';
 const key = '9ae07c47a0474c4c05fac5cd08278edd';
@@ -44,8 +45,8 @@ export default class RecipeFetcher extends Component {
     render() {
         if(this.state.isLoading === true){
             return (
-                <View>
-                    <Text>Loading...</Text>
+                <View style={{marginTop:250}}>
+                    <Spinner color='blue' />
                 </View>
             )
         }
