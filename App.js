@@ -1,14 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Faaks from './Faaks';
-import Meme from './Meme';
-import Pokelist from './utils/RecipeFetcher';
 
-import HomeScreen from './screens/HomeScreen';
-import ProfileScreen from './screens/ProfileScreen';
 
 import { createStackNavigator } from 'react-navigation';
 import PlateScreen from "./screens/PlateScreen";
+import ResultScreen from "./screens/ResultScreen";
+import HomeScreen from './screens/HomeScreen';
+import ProfileScreen from './screens/ProfileScreen';
+
 
 
 
@@ -26,6 +25,7 @@ const RootStack = createStackNavigator(
         Home: HomeScreen,
         Profile: ProfileScreen,
         Plate: PlateScreen,
+        Result: ResultScreen,
     },
     {
         initialRouteName: 'Home',

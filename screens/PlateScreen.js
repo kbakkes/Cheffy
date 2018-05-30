@@ -12,8 +12,13 @@ export default class PlateScreen extends React.Component {
         },
     });
 
+    stringifyIngredients(){
+        return 'salmon';
+    }
+
 
     render(){
+        console.log(this.stringifyIngredients());
         return(
             <View>
                 <ScrollView
@@ -23,6 +28,14 @@ export default class PlateScreen extends React.Component {
                     <Image source={require('./../images/sausage.png')} style={{width: 100, height: 100}}/>
                 </ScrollView>
                 <PlateComponent  style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }} />
+                <Button
+                    title="Search Recipes"
+                    onPress={() => this.props.navigation.navigate('Result', {
+                            title: 'Results',
+                            ingredients: this.stringifyIngredients(),
+                        }
+                        )}
+                />
             </View>
         )
     }
