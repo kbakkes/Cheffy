@@ -19,7 +19,7 @@ render(){
     const ingredients = navigation.getParam('ingredients', 'hotwings');
     return(
             <View>
-                    <RecipeFetcher ingredients={ingredients}/>
+                    <RecipeFetcher ingredients={ingredients} navigation={this.props.navigation}/>
             </View>
         )
     }

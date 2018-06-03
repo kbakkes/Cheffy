@@ -1,22 +1,88 @@
 import React from 'react';
-import {Text, View } from 'react-native';
+import { ScrollView   } from 'react-native';
+import {Card, CardItem, Thumbnail, Body, Left, Text, Icon, H3, List, ListItem, Separator, Right, Radio } from 'native-base';
+import _ from "underscore";
 
 export default class DetailScreen extends React.Component {
+    static navigationOptions = ({ navigation }) => ({
+        title: `${navigation.state.params.title}`,
+        headerTitleStyle : {textAlign: 'center',alignSelf:'center'},
+        headerStyle:{
+            backgroundColor:'white',
+        },
+    });
+
+    componentDidMount(){
+        this.setState({
+
+        })
+    }
+
+
+    returnRating(ratingNumber){
+
+        if(ratingNumber === null) {
+
+        }
+        let stars = [];
+        for(let i = 0; i < ratingNumber; i++){
+             stars.push(<Icon type='FontAwesome' name='star' style={{color: '#ffdb03', fontSize: 25}} />)
+        }
+        return  _.map(stars, function (rating) {
+            return rating
+        });
+
+    }
+
+    //onpress render selected is true
+    // onpress render selected is false
+
+    returnIngredient(ingredients){
+        return _.map(ingredients, function(ingredient){
+            return(
+            <ListItem selected={true}>
+                <Left>
+                    <Text>{ingredient}</Text>
+                </Left>
+                <Right>
+                    <Radio selected={true} />
+                </Right>
+            </ListItem>
+            )
+        })
+    }
+
+
+
+
+
+
 
 
     render(){
+        const { navigation }  = this.props;
+        const recipe = navigation.getParam('recipe', 'No Recipe');
+
+        console.log(recipe);
+
         return(
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <Text>Home Screen</Text>
-                <Button
-                    title="Profile"
-                    onPress={() => this.props.navigation.navigate('Profile',{title: 'My Profile'})}
-                />
-                <Button
-                    title="My plate"
-                    onPress={() => this.props.navigation.navigate('Plate',{title: 'My Plate'})}
-                />
-            </View>
+            <ScrollView>
+                <List style={{backgroundColor: 'white'}}>
+                    <ListItem>
+                        <Left>
+                            <Thumbnail large circular source={{uri: recipe.smallImageUrls[0]}} />
+                            <Body>
+                            <Text>{recipe.recipeName}</Text>
+                            <Text note>{this.returnRating(recipe.rating)}</Text>
+                            </Body>
+                        </Left>
+                    </ListItem>
+                <Separator bordered>
+                    <Text>INGREDIENTS</Text>
+                </Separator>
+                    {this.returnIngredient(recipe.ingredients)}
+                </List>
+            </ScrollView>
         )
     }
 }

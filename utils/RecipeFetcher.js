@@ -32,10 +32,15 @@ export default class RecipeFetcher extends Component {
 
 
     returnRecipes(recipesList){
+        let nav = this.props.navigation;
+
+        console.log('nav'+ nav);
         console.log(recipesList);
+
+
        return  _.map(recipesList, function (recipe) {
             console.log(recipe.recipeName);
-            return <ResultComponent recipe={recipe} />
+            return <ResultComponent navigation={nav} recipe={recipe} />
         });
 
     }
@@ -43,6 +48,7 @@ export default class RecipeFetcher extends Component {
 
 
     render() {
+
         if(this.state.isLoading === true){
             return (
                 <View style={{marginTop:250}}>

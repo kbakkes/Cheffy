@@ -7,6 +7,7 @@ import PlateScreen from "./screens/PlateScreen";
 import ResultScreen from "./screens/ResultScreen";
 import HomeScreen from './screens/HomeScreen';
 import ProfileScreen from './screens/ProfileScreen';
+import DetailScreen from "./screens/DetailScreen";
 
 
 
@@ -26,6 +27,7 @@ const RootStack = createStackNavigator(
         Profile: ProfileScreen,
         Plate: PlateScreen,
         Result: ResultScreen,
+        Detail: DetailScreen,
     },
     {
         initialRouteName: 'Home',
