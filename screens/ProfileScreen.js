@@ -1,7 +1,6 @@
 import React from 'react';
 import {Text, View, Button } from 'react-native';
-import Faaks from "../Faaks";
-import Meme from "../Meme";
+
 
 
 
@@ -21,7 +20,6 @@ export default class ProfileScreen extends React.Component {
     render(){
         return(
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <Meme/>
                 <Text>My Profile</Text>
                 <Button
                     title="Go to Profile again"
