@@ -1,0 +1,20 @@
+{
+  "beef-ingredients": [
+    {
+      "name": "beef",
+      "url": "https://i.imgur.com/G6EPboQ.png"
+    },
+    {
+      "name": "meatball",
+      "url": "https://i.imgur.com/hinVf1r.png"
+    },
+    {
+      "name": "patty",
+      "url": "https://i.imgur.com/Jo23SOu.png"
+    },
+    {
+      "name": "sausage",
+      "url": "https://i.imgur.com/iEXrdyv.png"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+"chicken-ingredients": [
+    {
+      "name": "chicken breast",
+      "url": "https://i.imgur.com/whgD9BU.png"
+    },
+    {
+      "name": "drumstick",
+      "url": "https://i.imgur.com/mJzYaIp.png"
+    },
+    {
+      "name": "chicken",
+      "url": "https://i.imgur.com/nCoHBQw.png"
+    },
+    {
+      "name": "chicken leg",
+      "url": "https://i.imgur.com/dEskXME.png"
+    }
+  ]
+}
