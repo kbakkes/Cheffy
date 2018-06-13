@@ -40,12 +40,12 @@ export default class DetailScreen extends React.Component {
     returnIngredient(ingredients){
         return _.map(ingredients, function(ingredient){
             return(
-            <ListItem selected={true}>
+            <ListItem selected={false}>
                 <Left>
                     <Text>{ingredient}</Text>
                 </Left>
                 <Right>
-                    <Radio selected={true} />
+                    <Radio selected={false} />
                 </Right>
             </ListItem>
             )

@@ -1,0 +1,24 @@
+{
+  "vegetables-ingredients": [
+    {
+      "name": "bell pepper",
+      "url": "https://i.imgur.com/zvUYzUY.png"
+    },
+    {
+      "name": "carrot",
+      "url": "https://i.imgur.com/BWdPHW2.png"
+    },
+    {
+      "name": "onion",
+      "url": "https://i.imgur.com/pCSnQpN.png"
+    },
+    {
+      "name": "tomato",
+      "url": "https://i.imgur.com/YcMBxjS.png"
+    },
+    {
+      "name": "eggplant",
+      "url": "https://i.imgur.com/Fwlq5Pi.png"
+    }
+  ]
+}

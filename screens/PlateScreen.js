@@ -1,24 +1,25 @@
 import React from 'react';
 import {Text, View, Button, Image, ScrollView,TouchableOpacity } from 'react-native';
 import PlateComponent from "../components/PlateComponent";
-import IngredientScroller from "../components/IngredientScroller";
-import { Content } from 'native-base';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import _ from 'underscore';
 import BeefIngredients from './../utils/ingredients/beef';
 import ChickenIngredients from './../utils/ingredients/chicken';
-import {Thumbnail } from 'native-base';
+import FishIngredients from './../utils/ingredients/fish';
+import VegetablesIngredients from './../utils/ingredients/vegetables';
+import FruitIngredients from './../utils/ingredients/fruit';
+
+
 
 
 export default class PlateScreen extends React.Component {
     constructor(){
         super();
+
         this.state = {
             category: '',
             ingredients: [],
         };
-        this.returnIngredientComponents = this.returnIngredientComponents.bind(this);
-        this.addToIngredients = this.addToIngredients.bind(this);
     }
 
     static navigationOptions = ({ navigation }) => ({
@@ -29,15 +30,17 @@ export default class PlateScreen extends React.Component {
         },
     });
 
-    MapIngredients(IngredientList){
+    mapIngredients(IngredientList){
         return (
-            _.map(IngredientList, function (IngredientObjects) {
+            _.map(IngredientList,  (IngredientObjects) => {
                 console.log(IngredientObjects);
-                return _.map(IngredientObjects, function(Ingredient){
+                return _.map(IngredientObjects, (Ingredient) => {
                     let url = Ingredient.url;
                     let ingredient = Ingredient.name;
                     return(
-                        <Image source={{uri:url}} style={{width: 110, height: 70}}/>
+                        <TouchableOpacity onPress={() => this.addToIngredients(ingredient)}>
+                            <Image source={{uri:url}} style={{width: 110, height: 70}}/>
+                        </TouchableOpacity>
                     );
                 })
             }))
@@ -46,32 +49,22 @@ export default class PlateScreen extends React.Component {
 
     returnIngredientComponents(category){
         if (category === 'beef') {
-            return (
-             _.map(BeefIngredients, function (BeefObjects) {
-                console.log(BeefObjects);
-                return _.map(BeefObjects, function(Ingredient){
-                    let url = Ingredient.url;
-                    let ingredient = Ingredient.name;
-                    return(
-                        <TouchableOpacity onPress={this.addToIngredients(ingredient).bind(this)}>
-                         <Image source={{uri:url}} style={{width: 110, height: 70}}/>
-                        </TouchableOpacity>
-                    );
-                })
-            }))
+            return this.mapIngredients(BeefIngredients);
         }
         if(category === 'chicken'){
-            return (
-                _.map(BeefIngredients, function (BeefObjects) {
-                    console.log(BeefObjects);
-                    return _.map(BeefObjects, function(Ingredient){
-                        let url = Ingredient.url;
-                        let ingredient = Ingredient.name;
-                        return(
-                            <Image source={{uri:url}} style={{width: 110, height: 70}}/>
-                        );
-                    })
-                }))
+            return this.mapIngredients(ChickenIngredients);
+        }
+        if(category === 'fish'){
+            return this.mapIngredients(FishIngredients);
+        }
+        if(category === 'vegetables'){
+            return this.mapIngredients(VegetablesIngredients);
+        }
+        if(category === 'fruit'){
+            return this.mapIngredients(FruitIngredients);
+        }
+        else{
+            console.log('geen category');
         }
     }
 
@@ -80,45 +73,41 @@ export default class PlateScreen extends React.Component {
             console.log('Er zijn er al 10');
             console.log('test');
         }
+        else if(ingredient === undefined){
+            console.log('Ingredient is Undefined, so it wont be added...');
+        }
+        else if(this.state.ingredients.includes(ingredient)){
+            console.log('Ingredient is already selected...')
+        }
         else {
-            this.state.ingredients.push((ingredient));
+            this.state.ingredients.push(ingredient);
+            console.log(ingredient, this.state.ingredients)
         }
     }
 
 
 
-    returnSelectedIngredients(ingredient){
-        if(this.state.ingredients.length > 11){
-            console.log('Er zijn er al 10');
-        }
-        else {
-            this.state.ingredients.push((ingredient));
-        }
-
+    returnSelectedIngredients(){
         return this.state.ingredients.join(', ')
     }
 
 
     stringifyIngredients(){
-        console.log(this.state);
-        console.log(this.state.ingredients.join('+'));
-        return 'salmon';
+        return (this.state.ingredients.join('+'));
     }
 
 
     setCategoryState(category){
-        this.returnSelectedIngredients(); // add to die ene text
         this.setState({
-           category: category
+            category: category
         });
-        console.log(this.state);
     }
 
 
     returnCaterogies(){
         return(
             <ScrollView
-            horizontal={true} >
+                horizontal={true} >
                 <TouchableOpacity onPress={() =>this.setCategoryState('beef')}>
                     <Image source={require('./../images/icons/iconMeat.png')} style={{width: 100, height: 100}}/>
                 </TouchableOpacity>
@@ -131,12 +120,12 @@ export default class PlateScreen extends React.Component {
                     <Image source={require('./../images/icons/iconFish.png')} style={{width: 100, height: 100}}/>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() =>this.setCategoryState('bread')}>
-                    <Image source={require('./../images/icons/iconBread.png')} style={{width: 100, height: 100}}/>
+                <TouchableOpacity onPress={() =>this.setCategoryState('vegetables')}>
+                    <Image source={require('./../images/icons/iconVegetables.png')} style={{width: 100, height: 100}}/>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() =>this.setCategoryState('herbs')}>
-                    <Image source={require('./../images/icons/iconCheese.png')} style={{width: 100, height: 100}}/>
+                <TouchableOpacity onPress={() =>this.setCategoryState('fruit')}>
+                    <Image source={require('./../images/icons/iconFruit.png')} style={{width: 100, height: 100}}/>
                 </TouchableOpacity>
             </ScrollView>
         )
@@ -148,41 +137,41 @@ export default class PlateScreen extends React.Component {
             <View>
                 {this.returnCaterogies()}
                 <ScrollView horizontal={true}>
-                {this.returnIngredientComponents(this.state.category)}
+                    {this.returnIngredientComponents(this.state.category)}
                 </ScrollView>
-                    <Grid>
-                        <Row style={{
-                            height:290,
-                            backgroundColor: '#ffc5d8',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                        }}>
-                            <View>
-                                <PlateComponent/>
-                            </View>
-                        </Row>
-                        <Row style={{
-                            height: 80,
-                            backgroundColor: '#91b8ff',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                        }}>
-                            <View>
-                                <Text style={{fontStyle: 'bold', fontSize: 20, textAlign:'center'}}>
-                                    Selected Ingredients:
-                                </Text>
-                                <Text style={{textAlign:'center'}}>
-                                    {this.returnSelectedIngredients()}
-                                </Text>
-                            </View>
-                        </Row>
-                        <Row  style={{
-                            height: 60,
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            backgroundColor: '#ffc183',
-                        }}>
-                            <View>
+                <Grid>
+                    <Row style={{
+                        height:290,
+                        backgroundColor: '#ffc5d8',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                    }}>
+                        <View>
+                            <PlateComponent/>
+                        </View>
+                    </Row>
+                    <Row style={{
+                        height: 80,
+                        backgroundColor: '#91b8ff',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                    }}>
+                        <View>
+                            <Text style={{fontStyle: 'bold', fontSize: 20, textAlign:'center'}}>
+                                Selected Ingredients:
+                            </Text>
+                            <Text style={{textAlign:'center'}}>
+                                {this.returnSelectedIngredients()}
+                            </Text>
+                        </View>
+                    </Row>
+                    <Row  style={{
+                        height: 60,
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        backgroundColor: '#ffc183',
+                    }}>
+                        <View>
                             <Button
                                 light
                                 title="Search Recipes"
@@ -192,11 +181,9 @@ export default class PlateScreen extends React.Component {
                                     }
                                 )}
                             />
-                            </View>
-                        </Row>
-
-                    </Grid>
-
+                        </View>
+                    </Row>
+                </Grid>
             </View>
         )
     }

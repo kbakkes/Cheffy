@@ -1,0 +1,20 @@
+{
+  "fruit-ingredients": [
+    {
+      "name": "apple",
+      "url": "https://i.imgur.com/6E3B1Xg.png"
+    },
+    {
+      "name": "pear",
+      "url": "https://i.imgur.com/LXYRJVO.png"
+    },
+    {
+      "name": "orange",
+      "url": "https://i.imgur.com/lhbjvtr.png"
+    },
+    {
+      "name": "pineapple",
+      "url": "https://i.imgur.com/fNCVpth.png"
+    }
+  ]
+}

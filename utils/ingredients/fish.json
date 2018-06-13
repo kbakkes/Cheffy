@@ -1,0 +1,24 @@
+{
+  "fish-ingredients": [
+    {
+      "name": "salmon",
+      "url": "https://i.imgur.com/luLtAGV.png"
+    },
+    {
+      "name": "shrimp",
+      "url": "https://i.imgur.com/Bdcr9xf.png"
+    },
+    {
+      "name": "tuna",
+      "url": "https://i.imgur.com/4I1yT3s.png"
+    },
+    {
+      "name": "codfish",
+      "url": "https://i.imgur.com/fv5ORkL.png"
+    },
+    {
+      "name": "gilthead",
+      "url": "https://i.imgur.com/9GQUKoQ.png"
+    }
+  ]
+}
