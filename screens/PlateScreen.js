@@ -38,6 +38,7 @@ export default class PlateScreen extends React.Component {
         this.setState({
             ingredients: []
         });
+
     }
 
     static navigationOptions = ({ navigation }) => ({

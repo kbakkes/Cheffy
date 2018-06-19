@@ -2,6 +2,7 @@ import React from 'react';
 import { ScrollView   } from 'react-native';
 import {Card, CardItem, Thumbnail, Body, Left, Text, Icon, H3, List, ListItem, Separator, Right, Radio } from 'native-base';
 import _ from "underscore";
+import IngredientComponent from './../components/IngredientComponent';
 
 export default class DetailScreen extends React.Component {
     static navigationOptions = ({ navigation }) => ({
@@ -40,18 +41,10 @@ export default class DetailScreen extends React.Component {
     // onpress render selected is false
 
     returnIngredient(ingredients){
-        let toggle = false;
 
         return _.map(ingredients, function(ingredient){
             return(
-            <ListItem selected={toggle}>
-                <Left>
-                    <Text>{ingredient}</Text>
-                </Left>
-                <Right>
-                    <Radio selected={toggle} />
-                </Right>
-            </ListItem>
+                <IngredientComponent name={ingredient}/>
             )
         })
     }
