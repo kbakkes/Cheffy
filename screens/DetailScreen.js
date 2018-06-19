@@ -19,6 +19,8 @@ export default class DetailScreen extends React.Component {
     }
 
 
+
+
     returnRating(ratingNumber){
 
         if(ratingNumber === null) {
@@ -38,14 +40,16 @@ export default class DetailScreen extends React.Component {
     // onpress render selected is false
 
     returnIngredient(ingredients){
+        let toggle = false;
+
         return _.map(ingredients, function(ingredient){
             return(
-            <ListItem selected={false}>
+            <ListItem selected={toggle}>
                 <Left>
                     <Text>{ingredient}</Text>
                 </Left>
                 <Right>
-                    <Radio selected={false} />
+                    <Radio selected={toggle} />
                 </Right>
             </ListItem>
             )

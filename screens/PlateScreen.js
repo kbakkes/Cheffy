@@ -1,8 +1,9 @@
 import React from 'react';
-import {Text, View, Button, Image, ScrollView,TouchableOpacity } from 'react-native';
-import PlateComponent from "../components/PlateComponent";
+import {Text, View, Image, ScrollView,TouchableOpacity } from 'react-native';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import _ from 'underscore';
+import { Icon, Button, Toast } from 'native-base';
+import PlateComponent from "../components/PlateComponent";
 import BeefIngredients from './../utils/ingredients/beef';
 import ChickenIngredients from './../utils/ingredients/chicken';
 import FishIngredients from './../utils/ingredients/fish';
@@ -22,12 +23,30 @@ export default class PlateScreen extends React.Component {
         };
     }
 
+    componentDidMount(){
+        this.props.navigation.setParams({
+            clearState:
+            <Button transparent>
+                <Icon type='MaterialIcons' name='delete'
+                              onPress={ () => this.clearIngredients()} />
+                </Button>
+        });
+
+    }
+
+    clearIngredients(){
+        this.setState({
+            ingredients: []
+        });
+    }
+
     static navigationOptions = ({ navigation }) => ({
         title: `${navigation.state.params.title}`,
         headerTitleStyle : {textAlign: 'center',alignSelf:'center'},
         headerStyle:{
             backgroundColor:'white',
         },
+        headerRight: navigation.state.params.clearState
     });
 
     mapIngredients(IngredientList){
@@ -87,6 +106,7 @@ export default class PlateScreen extends React.Component {
 
 
 
+
     returnSelectedIngredients(){
         return this.state.ingredients.join(', ')
     }
@@ -142,7 +162,6 @@ export default class PlateScreen extends React.Component {
                 <Grid>
                     <Row style={{
                         height:290,
-                        backgroundColor: '#ffc5d8',
                         justifyContent: 'center',
                         alignItems: 'center',
                     }}>
@@ -160,7 +179,7 @@ export default class PlateScreen extends React.Component {
                             <Text style={{fontStyle: 'bold', fontSize: 20, textAlign:'center'}}>
                                 Selected Ingredients:
                             </Text>
-                            <Text style={{textAlign:'center'}}>
+                            <Text style={{textAlign:'center', fontStyle: 'bold'}}>
                                 {this.returnSelectedIngredients()}
                             </Text>
                         </View>
@@ -172,15 +191,17 @@ export default class PlateScreen extends React.Component {
                         backgroundColor: '#ffc183',
                     }}>
                         <View>
-                            <Button
-                                light
-                                title="Search Recipes"
+                            <Button transparent
                                 onPress={() => this.props.navigation.navigate('Result', {
                                         title: 'Results',
                                         ingredients: this.stringifyIngredients(),
                                     }
                                 )}
-                            />
+                            >
+                                <Text style={{fontStyle: 'bold', fontSize: 20, textAlign:'center', color: '#3794fb'}}>
+                                    Search Recipes
+                                </Text>
+                            </Button>
                         </View>
                     </Row>
                 </Grid>
