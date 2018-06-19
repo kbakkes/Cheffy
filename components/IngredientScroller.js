@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
 import {Image, ScrollView, Text, StyleSheet } from 'react-native';
-import _ from 'underscore';
-import BeefIngredients from './../utils/ingredients/beef';
-import ChickenIngredients from './../utils/ingredients/chicken';
-import IngredientComponent from './IngredientComponent';
-
 
 export default class IngredientScroller extends Component {
 

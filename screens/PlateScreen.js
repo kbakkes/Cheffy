@@ -16,7 +16,6 @@ import FruitIngredients from './../utils/ingredients/fruit';
 export default class PlateScreen extends React.Component {
     constructor(){
         super();
-
         this.state = {
             category: '',
             ingredients: [],
@@ -38,7 +37,6 @@ export default class PlateScreen extends React.Component {
         this.setState({
             ingredients: []
         });
-
     }
 
     static navigationOptions = ({ navigation }) => ({
@@ -167,12 +165,13 @@ export default class PlateScreen extends React.Component {
                         alignItems: 'center',
                     }}>
                         <View>
-                            <PlateComponent/>
+                            <PlateComponent ingredients={this.state.ingredients}>
+
+                            </PlateComponent>
                         </View>
                     </Row>
                     <Row style={{
                         height: 80,
-                        backgroundColor: '#91b8ff',
                         justifyContent: 'center',
                         alignItems: 'center',
                     }}>
@@ -189,7 +188,6 @@ export default class PlateScreen extends React.Component {
                         height: 60,
                         justifyContent: 'center',
                         alignItems: 'center',
-                        backgroundColor: '#ffc183',
                     }}>
                         <View>
                             <Button transparent
